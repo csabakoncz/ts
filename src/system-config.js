@@ -3,6 +3,9 @@ SystemJS.config({
         three: {
             format: 'global',
             exports: 'THREE'
+        },
+        'three-fly-controls':{
+            deps: ['three']
         }
     },
     packages: {
@@ -23,6 +26,7 @@ SystemJS.config({
     },
     map: {
         three: '../node_modules/three/build/three.js',
+        'three-fly-controls': '../node_modules/three/examples/js/controls/FlyControls.js',
         ts: "../node_modules/plugin-typescript",
         typescript: "../node_modules/typescript",
         // 'plugin-babel': '../node_modules/systemjs-plugin-babel/plugin-babel.js',
