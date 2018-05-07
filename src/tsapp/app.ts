@@ -26,7 +26,7 @@ light.position.set(-1, 0.5, 1);
 light.castShadow = true
 scene.add(light)
 
-var ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
+var ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 ambientLight.name = 'Ambient light'
 scene.add(ambientLight)
 
