@@ -49,12 +49,13 @@ var animate = function (): any {
 animate();
 
 declare global {
-    interface Window {
-        th: any
+    interface HTMLElement {
+        data: any
     }
 }
 
-window.th = window.th || {}
-window.th.camera = camera
-window.th.scene = scene
-window.th.flyControl = flyControl
+var data: any = {}
+renderer.domElement.data = data;
+data.camera = camera
+data.scene = scene
+data.flyControl = flyControl
