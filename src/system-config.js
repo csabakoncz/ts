@@ -1,4 +1,4 @@
-SystemJS.config({
+window._systemConfig = {
     meta: {
         three: {
             format: 'global',
@@ -6,20 +6,12 @@ SystemJS.config({
         },
         'three-fly-controls':{
             deps: ['three']
+        },
+        typescript: {
+            exports: 'ts'
         }
     },
     packages: {
-        "ts": {
-            "main": "lib/plugin.js"
-        },
-        "typescript": {
-            "main": "lib/typescript.js",
-            "meta": {
-                "lib/typescript.js": {
-                    "exports": "ts"
-                }
-            }
-        },
         tsapp: {
             "defaultExtension": "ts",
         }
@@ -27,13 +19,11 @@ SystemJS.config({
     map: {
         three: '../node_modules/three/build/three.js',
         'three-fly-controls': '../node_modules/three/examples/js/controls/FlyControls.js',
-        ts: "../node_modules/plugin-typescript",
-        typescript: "../node_modules/typescript",
+        ts: "../node_modules/plugin-typescript/lib/plugin.js",
+        typescript: "../node_modules/typescript/lib/typescript.js",
         // 'plugin-babel': '../node_modules/systemjs-plugin-babel/plugin-babel.js',
         // 'systemjs-babel-build': '../node_modules/systemjs-plugin-babel/systemjs-babel-browser.js'
     },
     // transpiler: 'plugin-babel'
     transpiler: 'ts'
-})
-
-SystemJS.import('tsapp/app').then(m => console.log('app loaded ', m));
+};
