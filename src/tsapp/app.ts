@@ -4,14 +4,25 @@ import { Fly } from './fly'
 import { Ground } from './ground'
 import { Axes } from './axes'
 
-var scene = new THREE.Scene();
-scene.background = new THREE.Color(255, 255, 255)
+var margin = 10;
+var ww = () => window.innerWidth - 2 * margin;
+var wh = () => window.innerHeight - 2 * margin;
 
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+var scene = new THREE.Scene();
+scene.background = new THREE.Color(0.9, 0.9, 1);
+
+var camera = new THREE.PerspectiveCamera(75, ww() / wh(), 0.1, 1000);
 var renderer = new THREE.WebGLRenderer();
 renderer.shadowMapEnabled = true
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(ww(), wh());
 document.body.appendChild(renderer.domElement);
+
+window.addEventListener( 'resize', onWindowResize, false );
+function onWindowResize() {
+    camera.aspect = ww() / wh();
+    camera.updateProjectionMatrix();
+    renderer.setSize(ww(), wh());
+}
 
 scene.add(Axes.create())
 scene.add(Ground.create())
