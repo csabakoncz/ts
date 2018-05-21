@@ -3,11 +3,11 @@ import { Cube } from './cube'
 import { Fly } from './fly'
 import { Ground } from './ground'
 import { Axes } from './axes'
+import {House} from './house'
 
 var margin = 10;
 var ww = () => window.innerWidth - 2 * margin;
 var wh = () => window.innerHeight - 2 * margin;
-
 var scene = new THREE.Scene();
 scene.background = new THREE.Color(0.9, 0.9, 1);
 
@@ -29,7 +29,12 @@ scene.add(Ground.create())
 
 var cube = Cube.create();
 cube.name = 'Cube'
+cube.position.z += 2
 scene.add(cube);
+
+var house = House.create()
+house.name='house'
+scene.add(house)
 
 var light = new THREE.DirectionalLight(0xffffff, 0.5);
 light.name = 'Directional light'
@@ -47,6 +52,27 @@ var clock = new THREE.Clock()
 camera.position.x = 2;
 camera.position.y = 2;
 camera.position.z = 5;
+
+var state: any = {};
+try{
+    var savedState = JSON.parse(decodeURI(window.location.hash.substring(1)))
+    if(savedState){
+        state=savedState;
+    }
+}catch(e){
+    console.log('could not parse state', e)
+}
+
+if(state.camera){
+    if (state.camera.position) {
+        Object.assign(camera.position, state.camera.position)
+    }
+
+    if (state.camera.rotation) {
+        camera.rotation.setFromVector3(new THREE.Vector3().copy(state.camera.rotation))
+    }
+}
+
 var animate = function (): any {
     requestAnimationFrame(animate);
     if (false) {
@@ -56,6 +82,10 @@ var animate = function (): any {
     var delta = clock.getDelta();
     flyControl.update(delta);
     renderer.render(scene, camera);
+
+    state.camera={position: {...camera.position}, rotation: camera.rotation.toVector3()};
+
+    window.location.hash=JSON.stringify(state)
 };
 animate();
 
