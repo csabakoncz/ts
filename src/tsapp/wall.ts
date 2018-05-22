@@ -10,6 +10,8 @@ export class Wall {
         cube.position.x = xdim / 2
         cube.position.y = ydim / 2
         cube.position.z = - zdim / 2
+        cube.receiveShadow = true
+        cube.castShadow = true
         root.add(cube);
         return root;
     }
