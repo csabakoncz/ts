@@ -21,10 +21,12 @@ export class House {
         let root = new THREE.Group();
 
         {
-            let windowWidth = 0.6
+            let windowWidth = 0.8
             let windowHeight = 1.5
-            let window1 = House.makeBox(2,1,windowWidth,windowHeight)
-            let wall1 = Wall.create(width, height, thickness, new THREE.Color(color), [window1]);
+            let wp1=2
+            let window1 = House.makeBox(wp1,1,windowWidth,windowHeight)
+            let window2 = House.makeBox(width-wp1-windowWidth,1,windowWidth,windowHeight)
+            let wall1 = Wall.create(width, height, thickness, new THREE.Color(color), [window1, window2]);
             root.add(wall1);
             wall1.name = 'wall1'
         }
