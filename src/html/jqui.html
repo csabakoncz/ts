@@ -1,0 +1,20 @@
+<html>
+
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.21.3/system.js'></script>
+    <script src='../system-config.js'></script>
+    <script src='../system-config-prod.js'></script>
+
+    <script>
+        var c = window._systemConfig;
+        c.baseURL = '../'
+        c.relativize(c.baseURL);
+        SystemJS.config(c);
+
+        SystemJS.import('tsapp/jqui').then(m => console.log('app loaded ', m));
+    </script>
+</body>
+
+</html>
