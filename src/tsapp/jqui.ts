@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import { Modal } from './ui/modal'
+import fshtml from '../templates/form-selection.html'
 
 var input = $('<input></input>')
 var button = $('<button>Click me</button>')
@@ -10,25 +11,7 @@ button.on('click', showDialog)
 
 function showDialog() {
 
-    var dContent = $(
-        `<div>
-<label for="form-select">Choose a form:</label>
-    <select id="form-select">
-    <option value="">--</option>
-    <option value="rectangle">rectangle</option>
-    <option value="circle">circle</option>
-    </select>
-    <div id="opts">
-        <div id="rectangle" style="display: none">
-            <label>width:</label><input id="width"/>
-            <label>height:</label><input id="height"/>
-        </div>
-        <div id="circle" style="display: none">
-            <label>radius:</label><input id="radius"/>
-        </div>
-    </div>
-</div>`
-    )
+    var dContent = $(fshtml)
 
     dContent.find('#form-select').on('change', e=>{
         var form = $(e.target).val()

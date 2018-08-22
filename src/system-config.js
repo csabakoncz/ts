@@ -18,6 +18,9 @@ window._systemConfig = {
         },
         typescript: {
             exports: 'ts'
+        },
+        "*.html": {
+            "loader": "text"
         }
     },
     packages: {
@@ -32,6 +35,7 @@ window._systemConfig = {
         jqueryui: '../node_modules/jqueryui/jquery-ui.js',
         ts: "../node_modules/plugin-typescript/lib/plugin.js",
         typescript: "../node_modules/typescript/lib/typescript.js",
+        'text': 'https://cdn.jsdelivr.net/npm/systemjs-plugin-text@0.0.11/text.js'
         // 'plugin-babel': '../node_modules/systemjs-plugin-babel/plugin-babel.js',
         // 'systemjs-babel-build': '../node_modules/systemjs-plugin-babel/systemjs-babel-browser.js'
     },
