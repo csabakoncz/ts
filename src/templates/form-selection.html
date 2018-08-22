@@ -1,10 +1,16 @@
-<div>
+<div class="form-selection">
+    <style>
+        .form-selection label {
+            display: block
+        }
+    </style>
     <label for="form-select">Choose a form:</label>
     <select id="form-select">
         <option value="">--</option>
         <option value="rectangle">rectangle</option>
         <option value="circle">circle</option>
     </select>
+    <hr>
     <div id="opts">
         <div id="rectangle" style="display: none">
             <label>width:</label><input id="width" />
