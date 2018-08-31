@@ -1,8 +1,9 @@
 import THREE from 'three';
+import $ from 'jquery'
 
   // This is where stuff in our game will happen:
   var scene = new THREE.Scene();
-  scene.background = new THREE.Color(1,1,1)
+scene.background = new THREE.Color(1, 1, 1)
   // This is what sees the stuff:
   var aspect_ratio = window.innerWidth / window.innerHeight;
   var camera = new THREE.PerspectiveCamera(75, aspect_ratio, 1, 10000);
@@ -11,31 +12,34 @@ import THREE from 'three';
   // This will draw what the camera sees onto the screen:
   var renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+$('#renderer').append(renderer.domElement);
   // ******** START CODING ON THE NEXT LINE ********
   
   var p;
-  var elozo
+var elozoK
   var alap
-  var hossz,szel, mag
+var hossz, szel, mag
   
   var anyag = new THREE.MeshNormalMaterial();
-  var kocka = new THREE.BoxGeometry(1,1,1);
-  elozo=[1,1,1]
+var kocka = new THREE.BoxGeometry(1, 1, 1);
+var goemb = new THREE.SphereGeometry(1)
+elozoK = [1, 1, 1]
+var elozoG = 1
 
-  var test = new THREE.Mesh(kocka,anyag)
+var test = new THREE.Mesh(kocka, anyag)
   
   
   //na innen kezdődik kábé
   
-  document.addEventListener('keydown', function(event){
+document.addEventListener('keydown', function (event) {
     
     var kod = event.keyCode;
-    console.log('kod'+kod);
+  console.log('kod' + kod);
     
     //kérdés
     
-    if (kod==49){ p=window.prompt('Adjon meg egy parancsot.  tegla/hossz/szelesség/magasság');
+  if (kod == 49) {
+    p = window.prompt('Adjon meg egy parancsot.  tegla/hossz/szelesség/magasság');
     
    //kérdés kiírása
     
@@ -43,28 +47,28 @@ import THREE from 'three';
     
     // válasz feldolgozása
     
-    var pa=p.split('/');
+    var pa = p.split('/');
     
     console.log(pa);
     
-    alap=pa[0];
+    alap = pa[0];
     console.log(alap);
     
     //test formázása
     
     // tegla
-    if (alap=='tegla')   { 
+    if (alap == 'tegla') {
     
-    hossz=pa[1];
+      hossz = pa[1];
     console.log(hossz)
-    szel=pa[2];
-    mag=pa[3];
+      szel = pa[2];
+      mag = pa[3];
     
     
 
-    kocka.scale(1/elozo[0],1/elozo[1],1/elozo[2])
-    kocka.scale(szel,mag,hossz)
-    elozo=[szel,mag,hossz]
+      kocka.scale(1 / elozoK[0], 1 / elozoK[1], 1 / elozoK[2])
+      kocka.scale(szel, mag, hossz)
+      elozoK = [szel, mag, hossz]
 
 
     test.geometry = kocka
@@ -72,41 +76,53 @@ import THREE from 'three';
     scene.add(test)
 }
 
+    if (alap=='goemb')  {
+
+    var sugar = pa[1]
+    
+    goemb.scale(1/elozoG,1/elozoG,1/elozoG)
+    elozoG=sugar
+    goemb.scale(sugar,sugar,sugar)
+
+    test.geometry=goemb
+    scene.add(test)
+
+    }
 
    }
    
    //test forgatása
    
    // A
-   if (kod==65) {
+  if (kod == 65) {
      console.log('forog')
-     test.rotation.y-=0.25
+    test.rotation.y -= 0.25
 
      }
      
   // D
-     if (kod==68) {
+  if (kod == 68) {
      console.log('forog')
-     test.rotation.y+=0.25
+    test.rotation.y += 0.25
 
      }
      
      // W
-   if (kod==87) {
+  if (kod == 87) {
      console.log('forog')
-     test.rotation.x+=0.25
+    test.rotation.x += 0.25
  
    }
    
    // S
-   if (kod==83) {
+  if (kod == 83) {
      console.log('forog')
-     test.rotation.x-=0.25
+    test.rotation.x -= 0.25
 
    }
    
     });
-  function animate(){
+function animate() {
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
   }
