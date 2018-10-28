@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/createjs": "0.0.29",
+    "createjs": "^1.0.1",
     "excalibur": "^0.19.1",
     "jquery": "^3.3.1",
     "jqueryui": "^1.11.1",
