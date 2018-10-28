@@ -29,6 +29,7 @@ window._systemConfig = {
         }
     },
     map: {
+        excalibur: '../node_modules/excalibur/dist/excalibur.js',
         three: '../node_modules/three/build/three.js',
         'three-fly-controls': '../node_modules/three/examples/js/controls/FlyControls.js',
         jquery: '../node_modules/jquery/dist/jquery.js',
